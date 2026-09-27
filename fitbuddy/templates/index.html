@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}
+FitBuddy — AI Fitness Planner
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <p class="eyebrow">
+        AI FITNESS PLANNER
+    </p>
+
+    <h1>
+        Build your personalized
+        7-day fitness plan.
+    </h1>
+
+    <p class="lead">
+        Enter your fitness information and
+        FitBuddy will create a structured
+        workout plan with an AI-generated
+        nutrition or recovery tip.
+    </p>
+
+</section>
+
+
+<section class="card">
+
+    <h2>
+        Your Fitness Profile
+    </h2>
+
+
+    <form
+        method="post"
+        action="/generate-workout"
+        class="grid-form"
+    >
+
+        <label>
+            Name
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                maxlength="120"
+                required
+            >
+
+        </label>
+
+
+        <label>
+            User ID
+
+            <input
+                type="text"
+                name="user_id"
+                placeholder="Example: FB001"
+                maxlength="80"
+                required
+            >
+
+        </label>
+
+
+        <label>
+            Age
+
+            <input
+                type="number"
+                name="age"
+                min="13"
+                max="100"
+                required
+            >
+
+        </label>
+
+
+        <label>
+            Weight (kg)
+
+            <input
+                type="number"
+                name="weight"
+                min="20"
+                max="400"
+                step="0.1"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Fitness Goal
+
+            <select
+                name="goal"
+                required
+            >
+
+                <option value="weight loss">
+                    Weight Loss
+                </option>
+
+                <option value="muscle gain">
+                    Muscle Gain
+                </option>
+
+                <option value="general wellness">
+                    General Wellness
+                </option>
+
+                <option value="flexibility">
+                    Flexibility
+                </option>
+
+                <option value="endurance">
+                    Endurance
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+
+            Workout Intensity
+
+            <select
+                name="intensity"
+                required
+            >
+
+                <option value="low">
+                    Low
+                </option>
+
+                <option
+                    value="medium"
+                    selected
+                >
+                    Medium
+                </option>
+
+                <option value="high">
+                    High
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+
+            Experience Level
+
+            <select
+                name="experience_level"
+                required
+            >
+
+                <option value="beginner">
+                    Beginner
+                </option>
+
+                <option value="intermediate">
+                    Intermediate
+                </option>
+
+                <option value="advanced">
+                    Advanced
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <div class="full">
+
+            <button type="submit">
+                Generate My Plan →
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <p class="small">
+
+        For injuries, medical conditions,
+        or questions about exercise safety,
+        consult an appropriately qualified
+        professional.
+
+    </p>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+FitBuddy — Admin Dashboard
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="hero compact">
+
+    <p class="eyebrow">
+        ADMIN DASHBOARD
+    </p>
+
+    <h1>
+        Users & Plans
+    </h1>
+
+    <p class="lead">
+        Review registered users and their
+        stored workout plans.
+    </p>
+
+</section>
+
+
+{% if rows %}
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+    <th>
+        User
+    </th>
+
+    <th>
+        Profile
+    </th>
+
+    <th>
+        Original Plan
+    </th>
+
+    <th>
+        Updated Plan
+    </th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+
+{% for row in rows %}
+
+<tr>
+
+    <td>
+
+        <strong>
+            {{ row.user.name }}
+        </strong>
+
+        <br>
+
+        <small>
+            {{ row.user.user_id }}
+        </small>
+
+    </td>
+
+
+    <td>
+
+        Age:
+        {{ row.user.age }}
+
+        <br>
+
+        Weight:
+        {{ row.user.weight }} kg
+
+        <br>
+
+        Goal:
+        {{ row.user.goal }}
+
+        <br>
+
+        Intensity:
+        {{ row.user.intensity }}
+
+        <br>
+
+        Experience:
+        {{ row.user.experience_level }}
+
+    </td>
+
+
+    <td>
+
+        {% if row.plan %}
+
+        <pre class="mini">{{ row.plan.original_plan }}</pre>
+
+        {% else %}
+
+        No plan
+
+        {% endif %}
+
+    </td>
+
+
+    <td>
+
+        {% if row.plan and row.plan.updated_plan %}
+
+        <pre class="mini">{{ row.plan.updated_plan }}</pre>
+
+        {% if row.plan.feedback %}
+
+        <small>
+            <strong>
+                Feedback:
+            </strong>
+
+            {{ row.plan.feedback }}
+        </small>
+
+        {% endif %}
+
+        {% else %}
+
+        No update yet
+
+        {% endif %}
+
+    </td>
+
+</tr>
+
+
+{% endfor %}
+
+
+</tbody>
+
+</table>
+
+</div>
+
+
+{% else %}
+
+<section class="card">
+
+    <h2>
+        No Users Yet
+    </h2>
+
+    <p>
+        Users will appear here after
+        they generate a fitness plan.
+    </p>
+
+</section>
+
+{% endif %}
+
+
+{% endblock %}

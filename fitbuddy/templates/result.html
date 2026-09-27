@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+FitBuddy — Your Fitness Plan
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="notice">
+
+    {{ message }}
+
+</div>
+
+
+<section class="card profile">
+
+    <div>
+
+        <span>Name</span>
+
+        <strong>
+            {{ user.name }}
+        </strong>
+
+    </div>
+
+
+    <div>
+
+        <span>User ID</span>
+
+        <strong>
+            {{ user.user_id }}
+        </strong>
+
+    </div>
+
+
+    <div>
+
+        <span>Age</span>
+
+        <strong>
+            {{ user.age }}
+        </strong>
+
+    </div>
+
+
+    <div>
+
+        <span>Goal</span>
+
+        <strong>
+            {{ user.goal|title }}
+        </strong>
+
+    </div>
+
+
+    <div>
+
+        <span>Intensity</span>
+
+        <strong>
+            {{ user.intensity|title }}
+        </strong>
+
+    </div>
+
+</section>
+
+
+<section class="card">
+
+    <div class="section-title">
+
+        <h2>
+            7-Day Workout Plan
+        </h2>
+
+        <span class="badge">
+            AI Generated
+        </span>
+
+    </div>
+
+
+    <pre class="plan">{{ workout_plan }}</pre>
+
+</section>
+
+
+<section class="card tip">
+
+    <h2>
+        Nutrition / Recovery Tip
+    </h2>
+
+    <p>
+        {{ nutrition_tip }}
+    </p>
+
+</section>
+
+
+<section class="card">
+
+    <h2>
+        Refine Your Plan
+    </h2>
+
+    <p>
+        Give feedback and FitBuddy will
+        create an updated version of your
+        current workout plan.
+    </p>
+
+
+    <form
+        method="post"
+        action="/submit-feedback"
+    >
+
+        <input
+            type="hidden"
+            name="user_id"
+            value="{{ user.user_id }}"
+        >
+
+
+        <textarea
+            name="feedback"
+            rows="6"
+            maxlength="1200"
+            required
+            placeholder="Example: Make the workout easier and add more recovery days."
+        ></textarea>
+
+
+        <button type="submit">
+
+            Update Plan with AI →
+
+        </button>
+
+    </form>
+
+</section>
+
+
+<a
+    href="/"
+    class="back"
+>
+    ← Create Another Plan
+</a>
+
+
+{% endblock %}
